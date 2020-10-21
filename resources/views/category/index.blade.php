@@ -36,7 +36,7 @@
                         <td style="width:20%">
                             <form method="POST" action="{{url('editcategory')}}">
                                 {{ csrf_field() }}
-                                <input type="hidden" class="form-control" name="name_cat" value="{{$category["name_cat"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
+                                <input type="hidden" class="form-control" name="name_cat_edit" value="{{$category["name_cat"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
                                 <button type="submit"  class="btn btn-primary "> <i class="fa fa-pencil" aria-hidden="true" ></i></button>
                             </form>
                             <i class="fa fa-trash delete" aria-hidden="true" data-id="{{$category["id_cat"]}}" data-name="{{$category["name_cat"]}}"></i>

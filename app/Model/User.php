@@ -16,15 +16,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Model\Task');
     }
-    public function delete()
-    {
-        // delete all related photos
-        $this->tasks()->delete();
-        // as suggested by Dirk in comment,
-        // it's an uglier alternative, but faster
-        // Photo::where("user_id", $this->id)->delete()
-
-        // delete the user
-        return parent::delete();
-    }
 }

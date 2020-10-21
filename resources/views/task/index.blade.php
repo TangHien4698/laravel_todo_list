@@ -34,8 +34,8 @@
                     <tr class="table-info">
                         <th style="width:30%">{{$task["id"]}}</th>
                         <td style="width:40%">{{$task["name_task"]}}</td>
-                        <td style="width:40%">{{$task["name_user"]}}</td>
-                        <td style="width:40%">{{$task["name_category"]}}</td>
+                        <td style="width:40%">{{$task->user->name}}</td>
+                        <td style="width:40%">{{$task->category->name_cat}}</td>
                         <td style="width:20%">
                             <form method="POST" action="{{url('edittask')}}">
                                 {{ csrf_field() }}

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Model\Category;
+use App\Model\User;
+use App\Observers\UserObserver;
+use App\Observers\CategoryObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        User::observe(UserObserver::class);
+        Category::observe(CategoryObserver::class);
     }
 }

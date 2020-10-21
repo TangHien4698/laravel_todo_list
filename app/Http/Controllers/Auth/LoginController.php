@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class LoginController extends Controller
     {
         return view('login.index');
     }
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         $arr = [
             'email' => $request->email,

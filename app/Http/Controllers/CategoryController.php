@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Model\User;
 use Illuminate\Http\Request;
 use App\Model\Category;
@@ -15,29 +16,22 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $list_category =    Category::select('*')->get()->toArray();
+        $list_category =    Category::all()->toArray();
         return view("category.index",["list_category"=>$list_category]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( Request $request)
+    public function create( CategoryRequest $request)
     {
-        $request->validate([
-            'name_cat' => 'bail|required|unique:categorys|max:255',
-        ]);
         $category = new Category;
         $category->name_cat = $request->name_cat;
+        $status = self::ERROR;
         if($category->save())
         {
-            $status = "success";
-        }
-        else
-        {
-            $status = "error";
+            $status = self::SUCCESS;
         }
         return redirect()->route('category',['status'=>$status]);
     }
@@ -74,10 +68,7 @@ class CategoryController extends Controller
     {
         //
         $data = $request->all();
-        $request->validate([
-            'name_cat' => 'bail|required|max:255',
-        ]);
-        $infor_category =Category::where('name_cat',$data["name_cat"])->first();
+        $infor_category =Category::where('name_cat',$data["name_cat_edit"])->first();
         return view("category.edit",["infor_category"=>$infor_category]);
     }
 
@@ -88,12 +79,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(CategoryRequest $request)
     {
-        //
-        $request->validate([
-            'name_cat' => 'bail|required|unique:categorys|max:255',
-        ]);
         $value = Category::where('id_cat', $request["id"])
             ->update(['name_cat' => $request["name_cat"]]);
         if($value)
@@ -105,7 +92,6 @@ class CategoryController extends Controller
             return redirect()->route('category',['status'=>"error"]);
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -114,22 +100,13 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
-//        dd(1);
         $data = $request->all();
         $name_cat = $data["cat_name"];
-        $status = "";
-        if (empty($name_cat))
-        {
-            $status = "false";
-        }
-        else
-        {
-            if (Category::where('name_cat',$name_cat)->delete())
-            {
-                dd(123456);
-                $status = "true";
+        $status = self::FALSE;
+        if (!empty($name_cat)) {
+            if (Category::where('name_cat',$name_cat)->delete()) {
+                $status = self::TRUE;
             }
-            $status = "false";
         }
         return $status;
     }

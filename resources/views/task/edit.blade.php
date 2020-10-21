@@ -37,8 +37,8 @@
                         @enderror
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name User</label>
-                            <select name="id_user" class="form-control" value="{{$infor_task["name_user"]}}">
-                                <option value="{{$infor_task["user_id"]}}">{{$infor_task["name_user"]}}</option>
+                            <select name="id_user" class="form-control" value="{{$infor_task->user->name}}">
+                                <option value="{{$infor_task->user->id}}">{{$infor_task->user->name}}</option>
                                 @foreach($users as $user)
                                     <option value="{{$user["id"]}}">{{$user["name"]}}</option>
                                 @endforeach
@@ -46,8 +46,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name Category</label>
-                            <select name="id_category" class="form-control" value="{{$infor_task["name_category"]}}">
-                                <option value="{{$infor_task["category_id"]}}">{{$infor_task["name_category"]}}</option>
+                            <select name="id_category" class="form-control" value="{{$infor_task->category->name}}">
+                                <option value="{{$infor_task->category->id_cat}}">{{$infor_task->category->name_cat}}</option>
                                 @foreach($categorys as $category)
                                     <option value="{{$category["id_cat"]}}">{{$category["name_cat"]}}</option>
                                 @endforeach
