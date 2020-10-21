@@ -23,10 +23,10 @@
             <div class="modal-body">
                 <form method="POST" action="{{url('treat_dataedit_category')}}">
                     {{ csrf_field() }}
-                    <input type="hidden" class="form-control" name="id" value="{{$infor_category["id_cat"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
+                    <input type="hidden" class="form-control" name="id" value="{{$infor_category["id"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name User</label>
-                        <input type="text" class="form-control" name="name_cat" value="{{$infor_category["name_cat"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
+                        <input type="text" class="form-control" name="name" value="{{$infor_category["name"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
                     </div>
                     @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>

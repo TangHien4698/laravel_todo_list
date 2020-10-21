@@ -41,10 +41,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
     public function index()
     {
         return view('login.index');
     }
+
     public function login(LoginRequest $request)
     {
         $arr = [
@@ -57,6 +59,7 @@ class LoginController extends Controller
         return $this->loginFailed();
 
     }
+
     private function loginFailed()
     {
         return redirect()

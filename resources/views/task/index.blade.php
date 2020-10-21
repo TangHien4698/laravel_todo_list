@@ -33,16 +33,16 @@
                 @foreach ($tasks as $task)
                     <tr class="table-info">
                         <th style="width:30%">{{$task["id"]}}</th>
-                        <td style="width:40%">{{$task["name_task"]}}</td>
+                        <td style="width:40%">{{$task["name"]}}</td>
                         <td style="width:40%">{{$task->user->name}}</td>
-                        <td style="width:40%">{{$task->category->name_cat}}</td>
+                        <td style="width:40%">{{$task->category->name}}</td>
                         <td style="width:20%">
                             <form method="POST" action="{{url('edittask')}}">
                                 {{ csrf_field() }}
-                                <input type="hidden" class="form-control" name="id_task" value="{{$task["id"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
+                                <input type="hidden" class="form-control" name="id" value="{{$task["id"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
                                 <button type="submit"  class="btn btn-primary "> <i class="fa fa-pencil" aria-hidden="true" ></i></button>
                             </form>
-                            <i class="fa fa-trash delete" aria-hidden="true" data-id="{{$task["id"]}}" data-name="{{$task["name_task"]}}"></i>
+                            <i class="fa fa-trash delete" aria-hidden="true" data-id="{{$task["id"]}}" data-name="{{$task["name"]}}"></i>
                     </tr>
                 @endforeach
                 </tbody>
@@ -58,14 +58,14 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name Task</label>
-                            <input type="text" class="form-control" name="name_task" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Task">
+                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Task">
                         </div>
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name User</label>
-                            <select name="id_user" class="form-control">
+                            <select name="user_id" class="form-control">
                                 @foreach($users as $user)
                                 <option value="{{$user["id"]}}">{{$user["name"]}}</option>
                                 @endforeach
@@ -73,9 +73,9 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name Category</label>
-                            <select name="id_category" class="form-control">
+                            <select name="category_id" class="form-control">
                                 @foreach($categorys as $category)
-                                 <option value="{{$category["id_cat"]}}">{{$category["name_cat"]}}</option>
+                                 <option value="{{$category["id"]}}">{{$category["name"]}}</option>
                                 @endforeach
                             </select>
                         </div>

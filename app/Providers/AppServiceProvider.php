@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
     /**
      * Bootstrap any application services.
      *
@@ -28,7 +27,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        User::observe(UserObserver::class);
-        Category::observe(CategoryObserver::class);
     }
 }

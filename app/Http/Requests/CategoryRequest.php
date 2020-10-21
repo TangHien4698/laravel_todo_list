@@ -23,10 +23,18 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-//          dd($this);
+
         return [
-            'name_cat' => 'bail|required|unique:categorys|max:255',
-//            'name_cat_edit' => 'bail|required|max:255',
+            'name' => 'bail|required|unique:categories|max:255',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute khong đuoc bo trong',
+            'unique' => ':attribute da ton tai ! ',
+            'name.max' => 'Truong ten chi duoc nhap toi da 255 ki tu',
         ];
     }
 }

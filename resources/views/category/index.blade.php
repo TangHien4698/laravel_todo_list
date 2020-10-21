@@ -31,15 +31,15 @@
                 <tbody>
                 @foreach ($list_category as $category)
                     <tr class="table-info">
-                        <th style="width:30%">{{$category["id_cat"]}}</th>
-                        <td style="width:40%">{{$category["name_cat"]}}</td>
+                        <th style="width:30%">{{$category["id"]}}</th>
+                        <td style="width:40%">{{$category["name"]}}</td>
                         <td style="width:20%">
                             <form method="POST" action="{{url('editcategory')}}">
                                 {{ csrf_field() }}
-                                <input type="hidden" class="form-control" name="name_cat_edit" value="{{$category["name_cat"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
+                                <input type="hidden" class="form-control" name="name" value="{{$category["name"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
                                 <button type="submit"  class="btn btn-primary "> <i class="fa fa-pencil" aria-hidden="true" ></i></button>
                             </form>
-                            <i class="fa fa-trash delete" aria-hidden="true" data-id="{{$category["id_cat"]}}" data-name="{{$category["name_cat"]}}"></i>
+                            <i class="fa fa-trash delete" aria-hidden="true" data-id="{{$category["id"]}}" data-name="{{$category["name"]}}"></i>
                     </tr>
                 @endforeach
                 </tbody>
@@ -60,7 +60,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name Category</label>
-                        <input type="text" class="form-control" name="name_cat" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
+                        <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name student">
                     </div>
                     @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>

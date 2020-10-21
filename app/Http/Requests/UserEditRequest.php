@@ -29,4 +29,12 @@ class UserEditRequest extends FormRequest
             'email' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute khong đuoc bo trong',
+            'name.max' => 'Truong ten chi duoc nhap toi da 255 ki tu',
+        ];
+    }
 }

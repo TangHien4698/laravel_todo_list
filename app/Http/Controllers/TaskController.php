@@ -17,10 +17,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $categorys =  Category::all();
+        $categorys = Category::all();
         $users = User::all();
-        $tasks_main = Task::with('user','category')->get();
-        return view('task.index',["users"=>$users,"categorys"=>$categorys,"tasks"=>$tasks_main]);
+        $tasks_main = Task::with('user', 'category')->get();
+        return view('task.index', ["users" => $users, "categorys" => $categorys, "tasks" => $tasks_main]);
     }
 
     /**
@@ -31,33 +31,33 @@ class TaskController extends Controller
     public function create(TaskRequest $request)
     {
         //
-        $data = $request->all();
-        $task = new Task;
-        $task->name_task = $request->name_task;
-        $task->user_id = $request->id_user;
-        $task->	category_id = $request->id_category;
-        $status = self::ERROR;
-        if($task->save())
-        {
-            $status = self::SUCCESS;
-        }
-        return redirect()->route('task',['status'=>$status]);
+
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         //
+        $task = new Task;
+        $task->name = $request->name;
+        $task->user_id = $request->user_id;
+        $task->category_id = $request->category_id;
+        $status = self::ERROR;
+        if ($task->save()) {
+            $status = self::SUCCESS;
+        }
+        return redirect()->route('task', ['status' => $status]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -68,45 +68,43 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
     {
         //
-        $categorys =  Category::all();
+        $categories = Category::all();
         $users = User::all('*');
         $data = $request->all();
-        $infor_task =Task::with('user','category')->where('id',$data["id_task"])->get();
-        return view("task.edit",["infor_task"=>$infor_task[0],"users"=>$users,"categorys"=>$categorys]);
+        $task = Task::with('user', 'category')->where('id', $data["id"])->get();
+        return view("task.edit", ["task" => $task[0], "users" => $users, "categories" => $categories]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
 
         $value = Task::where('id', $request["id"])
-            ->update(['name_task' => $request["name_task"],'user_id' => $request["id_user"],'category_id'=>$request["id_category"]]);
-        if($value)
-        {
-            return redirect()->route('task',['status'=>self::SUCCESS]);
+            ->update(['name' => $request["name"], 'user_id' => $request["user_id"], 'category_id' => $request["category_id"]]);
+        if ($value) {
+            return redirect()->route('task', ['status' => self::SUCCESS]);
         }
-        else
-        {
-            return redirect()->route('task',['status'=>self::ERROR]);
-        }
+
+        return redirect()->route('task', ['status' => self::ERROR]);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
@@ -114,11 +112,9 @@ class TaskController extends Controller
         //
         $data = $request->all();
         $task_id = $data["task_id"];
-        $status =  self::FALSE;
-        if (!empty($task_id))
-        {
-            if (Task::where('id',$task_id)->delete())
-            {
+        $status = self::FALSE;
+        if (!empty($task_id)) {
+            if (Task::where('id', $task_id)->delete()) {
                 $status = self::TRUE;
             }
         }

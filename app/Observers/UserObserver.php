@@ -16,7 +16,6 @@ class UserObserver
     {
         //
     }
-
     /**
      * Handle the user "updated" event.
      *
@@ -27,7 +26,6 @@ class UserObserver
     {
         //
     }
-
     /**
      * Handle the user "deleted" event.
      *
@@ -36,17 +34,8 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        //
-        // delete all related photos
-        $this->tasks()->delete();
-        // as suggested by Dirk in comment,
-        // it's an uglier alternative, but faster
-        // Photo::where("user_id", $this->id)->delete()
 
-        // delete the user
-        return parent::delete();
     }
-
     /**
      * Handle the user "restored" event.
      *
@@ -57,7 +46,6 @@ class UserObserver
     {
         //
     }
-
     /**
      * Handle the user "force deleted" event.
      *

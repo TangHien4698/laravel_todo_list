@@ -24,9 +24,20 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_task' => 'bail|required|unique:tasks|max:255',
-            'id_user' => 'exists:App\Model\User,id',
-            'id_category' => 'exists:App\Model\Category,id_cat'
+            'name' => 'bail|required|unique:tasks|max:255',
+            'user_id' => 'exists:App\Model\User,id',
+            'category_id' => 'exists:App\Model\Category,id'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute khong đuoc bo trong',
+            'unique' => ':attribute da ton tai ! ',
+            'name.max' => 'Truong ten chi duoc nhap toi da 255 ki tu',
+            'user_id.exists' => 'User khong ton tai',
+            'category_id.exists' => 'Category khong ton tai',
         ];
     }
 }

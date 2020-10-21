@@ -28,4 +28,13 @@ class LoginRequest extends FormRequest
             'password' => 'required|string|min:8'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute khong đuoc bo trong',
+            'password.string' => 'Vui long nhap password dung kieu du lieu',
+            'password.min' => 'Password nhap toi thieu 8 ki tu'
+        ];
+    }
 }

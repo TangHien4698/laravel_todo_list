@@ -18,7 +18,6 @@
 <div class="container">
     <div class="row">
         <h1>EDIT Task</h1>
-
         <div class="col-md-12">
             <div class="modal-content-task">
                 <div class="modal-header">
@@ -27,18 +26,18 @@
                 <div class="modal-body">
                     <form method="POST" action="{{url('treat_dataedit_task')}}">
                         {{ csrf_field() }}
-                        <input type="hidden" class="form-control" name="id" value="{{$infor_task["id"]}}" >
+                        <input type="hidden" class="form-control" name="id" value="{{$task["id"]}}" >
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name Task</label>
-                            <input type="text" class="form-control" name="name_task" value="{{$infor_task["name_task"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Task">
+                            <input type="text" class="form-control" name="name" value="{{$task["name"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name Task">
                         </div>
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name User</label>
-                            <select name="id_user" class="form-control" value="{{$infor_task->user->name}}">
-                                <option value="{{$infor_task->user->id}}">{{$infor_task->user->name}}</option>
+                            <select name="user_id" class="form-control" value="{{$task->user->name}}">
+                                <option value="{{$task->user->id}}">{{$task->user->name}}</option>
                                 @foreach($users as $user)
                                     <option value="{{$user["id"]}}">{{$user["name"]}}</option>
                                 @endforeach
@@ -46,10 +45,10 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name Category</label>
-                            <select name="id_category" class="form-control" value="{{$infor_task->category->name}}">
-                                <option value="{{$infor_task->category->id_cat}}">{{$infor_task->category->name_cat}}</option>
-                                @foreach($categorys as $category)
-                                    <option value="{{$category["id_cat"]}}">{{$category["name_cat"]}}</option>
+                            <select name="category_id" class="form-control" value="{{$task->category->name}}">
+                                <option value="{{$task->category->id}}">{{$task->category->name}}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category["id"]}}">{{$category["name"]}}</option>
                                 @endforeach
                             </select>
                         </div>

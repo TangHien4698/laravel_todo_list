@@ -22,12 +22,12 @@ Route::post('edituser','UserController@edit');
 Route::post('treat_dataedit','UserController@update')->name('treat_dataedit');
 // category
 Route::get('/category','CategoryController@index')->name('category');
-Route::post('addcategory','CategoryController@create');
+Route::post('addcategory','CategoryController@store');
 Route::post('editcategory','CategoryController@edit');
 Route::post('treat_dataedit_category','CategoryController@update')->name('treat_dataedit');
 // task
 Route::get('/task','TaskController@index')->name('task');
-Route::post('addtask','TaskController@create');
+Route::post('addtask','TaskController@store');
 Route::post('edittask','TaskController@edit');
 Route::post('treat_dataedit_task','TaskController@update');
 Route::get('/login','Auth\LoginController@index')->name('login')->middleware('check_logout');;

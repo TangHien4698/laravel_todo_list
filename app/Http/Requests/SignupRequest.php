@@ -29,4 +29,15 @@ class SignupRequest extends FormRequest
             'password' => 'required|string|min:8'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute khong đuoc bo trong',
+            'unique' => ':attribute da ton tai ! ',
+            'name.max' => 'Truong ten chi duoc nhap toi da 255 ki tu',
+            'password.string' => 'Vui long nhap password dung kieu du lieu',
+            'password.min' => 'Password nhap toi thieu 8 ki tu'
+        ];
+    }
 }

@@ -31,16 +31,11 @@ class UserController extends Controller
      */
     public function create(UserRequest $request)
     {
-//        $request->validate([
-//            'name' => 'bail|required|unique:users|max:255',
-//            'email' => 'required|unique:users',
-//            'password' => 'required|string|min:8'
-//        ]);
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->email);
-        $status =  self::ERROR;
+        $status = self::ERROR;
         if ($user->save()) {
             $status = self::SUCCESS;
         }
@@ -80,9 +75,6 @@ class UserController extends Controller
     {
         //
         $data = $request->all();
-//        $request->validate([
-//            'name_edit' => 'bail|required|max:255',
-//        ]);
         $infor_user = User::where('name', $data["name_edit"])->first();
         return view("user.edit", ["infor_user" => $infor_user]);
     }
@@ -96,18 +88,13 @@ class UserController extends Controller
      */
     public function update(UserEditRequest $request)
     {
-//        $request->validate([
-//            'name_edit' => 'bail|required|max:255',
-//            'email_edit' => 'required',
-//        ]);
-
         $value = User::where('id', $request["id"])
             ->update(['name' => $request["name"], 'email' => $request["email"]]);
         if ($value) {
             return redirect()->route('homeuser_router', ['status' => self::SUCCESS]);
-        } else {
-            return redirect()->route('homeuser_router', ['status' => self::ERROR]);
         }
+        return redirect()->route('homeuser_router', ['status' => self::ERROR]);
+
     }
 
     /**
