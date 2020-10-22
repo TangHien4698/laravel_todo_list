@@ -1,15 +1,17 @@
 .modal-content {
-    display: none;
+  display: none;
 }
 
 .modal-content-edit {
-    display: none;
+  display: none;
 }
 
-a.category, a.task {
-    padding: 10px;
-    border: 1px solid #545b62;
-    background: red;
-    color: yellow;
-    margin-left: 10px;
+a.category,
+a.task {
+  padding: 10px;
+  border: 1px solid #545b62;
+  background: red;
+  color: yellow;
+  margin-left: 10px;
 }
+

@@ -1,6 +1,6 @@
 @extends('layout')
 @section('header')
-    <link rel="stylesheet" type="text/css" href="css/index_cat.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/index_cat.css') }}">
 @endsection()
 @section('content')
 <div class="container">
@@ -60,6 +60,6 @@
 </div>
 @endsection
 @section('footer')
-    <script src="js/index_category.js"></script>
+    <script src="js/category/index_category.js"></script>
 @endsection
 

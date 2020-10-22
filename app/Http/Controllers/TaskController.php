@@ -7,7 +7,7 @@ use App\Model\Category;
 use App\Model\Task;
 use App\Model\User;
 use Illuminate\Http\Request;
-
+use Response;
 class TaskController extends Controller
 {
     /**

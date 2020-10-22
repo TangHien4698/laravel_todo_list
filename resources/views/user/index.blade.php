@@ -1,6 +1,7 @@
 @extends('layout')
 @section('header')
-    <link rel="stylesheet" type="text/css" href="css/index_user.css">
+{{--    <link rel="stylesheet" type="text/css" href="css/index_user.css">--}}
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/index_user.css') }}">
 @endsection()
 @section('content')
 <div class="container">
@@ -76,5 +77,5 @@
 </div>
 @endsection
 @section('footer')
-    <script src="js/index_user.js"></script>
+    <script src="js/user/index_user.js"></script>
 @endsection

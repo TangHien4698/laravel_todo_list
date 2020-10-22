@@ -1,0 +1,17 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/index_task.css": "/css/index_task.css",
+    "/css/index_user.css": "/css/index_user.css",
+    "/css/util.css": "/css/util.css",
+    "/css/login.css": "/css/login.css",
+    "/css/sweetalert2.min.css": "/css/sweetalert2.min.css",
+    "/css/index_cat.css": "/css/index_cat.css",
+    "/js/category/index_category.js": "/js/category/index_category.js",
+    "/js/main.js": "/js/main.js",
+    "/js/sweetalert/sweetalert2.js": "/js/sweetalert/sweetalert2.js",
+    "/js/sweetalert/sweetalert2.all.js": "/js/sweetalert/sweetalert2.all.js",
+    "/js/sweetalert/sweetalert2.min.js": "/js/sweetalert/sweetalert2.min.js",
+    "/js/task/index_task.js": "/js/task/index_task.js",
+    "/js/user/index_user.js": "/js/user/index_user.js"
+}

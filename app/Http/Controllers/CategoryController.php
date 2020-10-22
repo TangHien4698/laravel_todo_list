@@ -7,7 +7,7 @@ use App\Model\User;
 use Illuminate\Http\Request;
 use App\Model\Category;
 use Validator;
-
+use Response;
 class CategoryController extends Controller
 {
     /**
