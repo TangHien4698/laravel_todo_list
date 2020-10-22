@@ -8,6 +8,7 @@ use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Validator;
+use Response;
 
 class UserController extends Controller
 {
@@ -108,11 +109,13 @@ class UserController extends Controller
         $data = $request->all();
         $name_user = $data["user_name"];
         $status = self::FALSE;
+        $message = "Delete user fail";
         if (!empty($name_user)) {
             if (User::where('name', $name_user)->delete()) {
                 $status = self::TRUE;
+                $message = "Delete user success";
             }
         }
-        return $status;
+        return Response::json(['status' => $status, 'message' => $message]);
     }
 }

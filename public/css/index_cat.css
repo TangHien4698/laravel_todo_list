@@ -1,4 +1,8 @@
-a.user,a.task{
+.modal-content {
+    display: none;
+}
+
+a.user, a.task {
     padding: 10px;
     border: 1px solid #545b62;
     background: red;

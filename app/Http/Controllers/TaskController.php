@@ -113,11 +113,13 @@ class TaskController extends Controller
         $data = $request->all();
         $task_id = $data["task_id"];
         $status = self::FALSE;
+        $message = "Delete task fail";
         if (!empty($task_id)) {
             if (Task::where('id', $task_id)->delete()) {
                 $status = self::TRUE;
+                $message = "Delete task success";
             }
         }
-        return $status;
+        return Response::json(['status' => $status, 'message' => $message]);
     }
 }

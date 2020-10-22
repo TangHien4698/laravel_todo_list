@@ -1,7 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+@extends('layout')
+@section('header')
     <title>Register V1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,10 +18,8 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <!--===============================================================================================-->
-</head>
-<body>
-
+@endsection()
+@section('content')
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -68,26 +64,11 @@
                 @enderror
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Login
+                        Register
                     </button>
-                </div>
-
-                <div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-                    <a class="txt2" href="#">
-                        Username / Password?
-                    </a>
-                </div>
-
-                <div class="text-center p-t-136">
-                    <a class="txt2" href="{{url('/register')}}">
-                        Create your Account
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                    </a>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@endsection

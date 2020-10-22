@@ -36,10 +36,6 @@ class CategoryObserver
      */
     public function deleted(Category $category)
     {
-        //
-        $this->tasks()->delete();
-        // delete the user
-        return parent::delete();
     }
 
     /**

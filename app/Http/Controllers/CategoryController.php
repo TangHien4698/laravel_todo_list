@@ -99,13 +99,15 @@ class CategoryController extends Controller
     public function destroy(Request $request)
     {
         $data = $request->all();
-        $name_cat = $data["cat_name"];
+        $name = $data["name"];
         $status = self::FALSE;
-        if (!empty($name_cat)) {
-            if (Category::where('name', $name_cat)->delete()) {
+        $message = "Delete category fail";
+        if (!empty($name)) {
+            if (Category::where('name', $name)->delete()) {
                 $status = self::TRUE;
+                $message = "Delete category success";
             }
         }
-        return $status;
+        return Response::json(['status' => $status, 'message' => $message]);
     }
 }

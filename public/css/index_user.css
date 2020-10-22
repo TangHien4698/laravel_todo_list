@@ -1,12 +1,12 @@
-.modal-content
-{
+.modal-content {
     display: none;
 }
-.modal-content-edit
-{
+
+.modal-content-edit {
     display: none;
 }
-a.category,a.task{
+
+a.category, a.task {
     padding: 10px;
     border: 1px solid #545b62;
     background: red;
